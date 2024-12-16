@@ -1,6 +1,10 @@
 name: go-modules-action
 description: Get modules contained in the repository (./, pkg)
 
+outputs:
+  modules:
+    description: 'JSON string from modules list'
+
 branding:
   icon: 'list'
   color: 'orange'
