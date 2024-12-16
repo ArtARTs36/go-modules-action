@@ -1,0 +1,9 @@
+name: go-modules-action
+description: Get modules contained in the repository (./, pkg)
+
+branding:
+  icon: 'list'
+  color: 'orange'
+runs:
+  using: docker
+  image: 'Dockerfile'
