@@ -1,33 +1,60 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	cli "github.com/artarts36/singlecli"
 	"log/slog"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/artarts36/gomodfinder"
 )
 
 func main() {
-	cwd, err := os.Getwd()
-	if err != nil {
-		slog.With(slog.Any("err", err)).Error("failed to get current working directory")
-		os.Exit(1)
+	app := &cli.App{
+		BuildInfo: &cli.BuildInfo{
+			Name:      "go-modules-action",
+			Version:   "",
+			BuildDate: time.Now().String(),
+		},
+		Args: []*cli.ArgDefinition{
+			{
+				Name:        "dir",
+				Required:    false,
+				Description: "Directory to search",
+			},
+		},
+		Action: run,
+	}
+
+	app.RunWithGlobalArgs(context.Background())
+}
+
+func run(ctx *cli.Context) error {
+	var err error
+
+	cwd := ctx.GetArg("dir")
+	if cwd == "" {
+		cwd, err = os.Getwd()
+		if err != nil {
+			return fmt.Errorf("could not determine current working directory: %w", err)
+		}
 	}
 
 	modules, err := findModules(cwd)
 	if err != nil {
-		slog.With(slog.Any("err", err)).Error("failed to find modules")
-		os.Exit(1)
+		return fmt.Errorf("could not find modules: %w", err)
 	}
 
 	err = writeModules(modules)
 	if err != nil {
-		slog.With(slog.Any("err", err)).Error("failed to write modules to environment")
-		os.Exit(1)
+		return fmt.Errorf("could not write modules: %w", err)
 	}
+
+	return nil
 }
 
 type Module struct {
