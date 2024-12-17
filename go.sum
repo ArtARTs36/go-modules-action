@@ -1,7 +1,5 @@
 github.com/artarts36/gomodfinder v0.1.0 h1:yYOa5OlHpJp1B4GpZCQUC5Z/+s3PBFMNRU4/5hO8QAA=
 github.com/artarts36/gomodfinder v0.1.0/go.mod h1:SKGqLJWAh+V4i/x4gxvTBS2FjEbw2/xbiN1aoQ2jiVA=
-github.com/artarts36/singlecli v0.0.0-20241120160314-a8f60c3be52d h1:klb8a76OjhocAreJRkeeytv3RSV2mP4y2bvx4Knxprc=
-github.com/artarts36/singlecli v0.0.0-20241120160314-a8f60c3be52d/go.mod h1:fHZ8rEyl67LbKgG7bJqhNK7w0sed4GTp83FLu2IMmBU=
 github.com/artarts36/singlecli v0.0.0-20241217004936-26a85d49cb53 h1:74vH3KvjT18LPmLHiWdRgtayYNkbsw6z6clqYlY5Mk4=
 github.com/artarts36/singlecli v0.0.0-20241217004936-26a85d49cb53/go.mod h1:fHZ8rEyl67LbKgG7bJqhNK7w0sed4GTp83FLu2IMmBU=
 github.com/bahlo/generic-list-go v0.2.0 h1:5sz/EEAK+ls5wF+NeqDpk5+iNdMDXrh3z3nPnH1Wvgk=

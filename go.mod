@@ -1,4 +1,4 @@
-module github.com/artarts36/go-modules-action
+module github.com/ci-space/go-modules-action
 
 go 1.23.3
 
