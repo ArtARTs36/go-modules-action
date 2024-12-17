@@ -4,7 +4,7 @@ description: Get modules contained in the repository (./, pkg)
 inputs:
   dir:
     description: Directory
-    default: ${{ github.workspace }}
+    required: false
 
 outputs:
   modules:
