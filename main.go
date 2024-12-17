@@ -33,28 +33,7 @@ func main() {
 	app.RunWithGlobalArgs(context.Background())
 }
 
-func getCwd(ctx *cli.Context) (string, error) {
-	var err error
-
-	cwd := ctx.GetArg("dir")
-	if cwd != "" {
-		return cwd, nil
-	}
-
-	cwd, ok := os.LookupEnv("GITHUB_WORKSPACE")
-	if ok {
-		return cwd, nil
-	}
-
-	cwd, err = os.Getwd()
-	if err != nil {
-		return "", fmt.Errorf("could not determine current working directory: %w", err)
-	}
-
-	return cwd, nil
-}
-
-func run(ctx *cli.Context) error {
+func run(_ *cli.Context) error {
 	modules, err := findModules()
 	if err != nil {
 		return fmt.Errorf("could not find modules: %w", err)

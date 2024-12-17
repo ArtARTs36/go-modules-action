@@ -1,11 +1,6 @@
 name: go-modules-action
 description: Get modules contained in the repository (./, pkg)
 
-inputs:
-  dir:
-    description: Directory
-    required: false
-
 outputs:
   modules:
     description: 'JSON string from modules list'
