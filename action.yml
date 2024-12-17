@@ -11,3 +11,5 @@ branding:
 runs:
   using: docker
   image: 'Dockerfile'
+  args:
+    - '${{ github.workspace }}'
