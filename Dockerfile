@@ -12,7 +12,7 @@ RUN go mod download
 
 COPY . .
 
-RUN GOOS=linux go build -ldflags="-s -w -X 'main.Version=${APP_VERSION}' -X 'main.BuildDate=${BUILD_TIME}'" -o /go/bin/modules-action /go/src/github.com/artarts36/go-modules-action/main.go
+RUN GOOS=linux go build -ldflags="-s -w -X 'main.Version=${APP_VERSION}' -X 'main.BuildDate=${BUILD_TIME}'" -o /go/bin/go-modules-action /go/src/github.com/artarts36/go-modules-action/main.go
 
 ######################################################
 
