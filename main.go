@@ -4,29 +4,20 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/artarts36/gomodfinder"
 	cli "github.com/artarts36/singlecli"
 	"log/slog"
 	"os"
 	"path/filepath"
-	"time"
-
-	"github.com/artarts36/gomodfinder"
 )
 
 func main() {
 	app := &cli.App{
 		BuildInfo: &cli.BuildInfo{
-			Name:      "go-modules-action",
-			Version:   "",
-			BuildDate: time.Now().String(),
+			Name:    "go-modules-action",
+			Version: "v0.1.0",
 		},
-		Args: []*cli.ArgDefinition{
-			{
-				Name:        "dir",
-				Required:    false,
-				Description: "Directory to search",
-			},
-		},
+		Args:   []*cli.ArgDefinition{},
 		Action: run,
 	}
 
