@@ -129,7 +129,7 @@ func findModule(dir string) (Module, error) {
 
 	return Module{
 		Name: mod.Module.Mod.Path,
-		Dir:  dir,
+		Dir:  mod.Dir(),
 	}, nil
 }
 
