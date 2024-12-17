@@ -62,6 +62,8 @@ func run(ctx *cli.Context) error {
 		return err
 	}
 
+	slog.With(slog.String("cwd", cwd)).InfoContext(ctx.Context, "cwd detected")
+
 	modules, err := findModules(cwd)
 	if err != nil {
 		return fmt.Errorf("could not find modules: %w", err)
