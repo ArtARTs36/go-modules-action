@@ -55,16 +55,7 @@ func getCwd(ctx *cli.Context) (string, error) {
 }
 
 func run(ctx *cli.Context) error {
-	var err error
-
-	cwd, err := getCwd(ctx)
-	if err != nil {
-		return err
-	}
-
-	slog.With(slog.String("cwd", cwd)).InfoContext(ctx.Context, "cwd detected")
-
-	modules, err := findModules(cwd)
+	modules, err := findModules()
 	if err != nil {
 		return fmt.Errorf("could not find modules: %w", err)
 	}
@@ -82,15 +73,15 @@ type Module struct {
 	Dir  string `json:"dir"`
 }
 
-func findModules(cwd string) ([]Module, error) {
-	cwdModule, err := findModule(cwd)
+func findModules() ([]Module, error) {
+	cwdModule, err := findModule("./")
 	if err != nil {
 		return nil, fmt.Errorf("failed to find module in current working directory: %w", err)
 	}
 
 	modules := []Module{cwdModule}
 
-	pkgDirs, err := os.ReadDir(filepath.Join(cwd, "pkg"))
+	pkgDirs, err := os.ReadDir("./pkg")
 	if err != nil {
 		if os.IsNotExist(err) {
 			return modules, nil
@@ -104,7 +95,7 @@ func findModules(cwd string) ([]Module, error) {
 			continue
 		}
 
-		pkg := filepath.Join(cwd, "pkg", pkgDir.Name())
+		pkg := filepath.Join("./pkg", pkgDir.Name())
 
 		module, mErr := findModule(pkg)
 		if mErr != nil {
@@ -129,7 +120,7 @@ func findModule(dir string) (Module, error) {
 
 	return Module{
 		Name: mod.Module.Mod.Path,
-		Dir:  mod.Dir(),
+		Dir:  dir,
 	}, nil
 }
 
