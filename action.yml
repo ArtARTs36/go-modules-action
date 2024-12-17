@@ -1,6 +1,11 @@
 name: go-modules-action
 description: Get modules contained in the repository (./, pkg)
 
+inputs:
+  dir:
+    description: Directory
+    default: ${{ github.workspace }}
+
 outputs:
   modules:
     description: 'JSON string from modules list'
@@ -12,4 +17,4 @@ runs:
   using: docker
   image: 'Dockerfile'
   args:
-    - '${{ github.workspace }}'
+    - '${{ inputs.dir }}'
