@@ -11,7 +11,7 @@ isCommand() {
 
 # check if the first argument passed in looks like a flag
 if [ "${1#-}" != "$1" ]; then
-  set -- tini -- /go/bin/go-modules-action "$@" >>
+  set -- tini -- /go/bin/go-modules-action "$@"
 # check if the first argument passed in is go-modules-action
 elif [ "$1" = 'go-modules-action' ]; then
   set -- tini -- "$@"
